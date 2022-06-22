@@ -13,3 +13,38 @@ function hideImage(data){
     })
   }
   }
+  function renderData(data){
+  
+    for (let items of data){
+      
+      //getting title from api
+      let title=document.querySelector("#card-title" )
+      title.innerHTML=items.title
+      //getting the image form api
+      let image=document.querySelector("#card-image")
+      image.src=items.image
+      image.alt=items.title
+      //getting the likes from api
+      let likeSpan=document.querySelector("#like-count")
+      likeSpan.innerHTML=(`${items.likes} likes`)  
+    }
+  }
+  function inputForm(){
+
+    const form=document.querySelector("#comment-form")
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault()
+      const input=document.querySelector("#comment")
+      const button=document.querySelector(".comment-button")
+      const ul=document.querySelector("#comments-list")
+      button.addEventListener('click',()=>{
+        const li=document.createElement('li')
+        li.innerHTML=input.value
+        ul.append(li)
+        li.addEventListener('click',()=>{
+          li.remove()
+        })
+        e.target.reset()
+      })
+    })
+  }
