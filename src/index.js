@@ -11,5 +11,15 @@ function fetchComments(){
             
           }
         })
-      }
+}
 
+function button(){
+
+    const likeBtn=document.querySelector("#like-button")
+    let likeCount=0;
+    likeBtn.addEventListener('click',()=>{
+      likeCount++
+      let likeSpan=document.querySelector("#like-count")
+      likeSpan.innerHTML=(`${likeCount} likes`)  
+    })
+}
